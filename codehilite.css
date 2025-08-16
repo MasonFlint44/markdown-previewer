@@ -95,8 +95,8 @@ span.linenos.special {
 /* Names */
 .codehilite .n  { color: #d4d4d4; } /* base name -> white */
 .codehilite .na { color: #9cdcfe; } /* attribute */
-.codehilite .nb { color: #dcdcaa; } /* builtin -> pale yellow */
-.codehilite .bp { color: #dcdcaa; } /* builtin pseudo */
+.codehilite .nb { color: #4ec9b0; } /* builtin -> green */
+.codehilite .bp { color: #4ec9b0; } /* builtin pseudo -> green */
 .codehilite .nc { color: #4ec9b0; font-weight: bold; } /* class */
 .codehilite .nn { color: #4ec9b0; font-weight: bold; } /* namespace */
 .codehilite .no { color: #4fc1ff; } /* constant */

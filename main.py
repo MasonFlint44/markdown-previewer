@@ -26,7 +26,7 @@ def _infer_pyscript_version() -> str:
     for u in urls:
         m = pat.search(u)
         if m: return m.group(1)
-    return "?"
+    return ""
 
 def set_status_rendering():
     status_text.innerText = "Rendering…"
