@@ -289,3 +289,41 @@ span.linenos.special {
   color: #858585;
   border-right: 1px solid #1b2230;
 } */
+
+/* Keep the table clipped to the rounded container */
+.codehilite {
+  display: block;
+  overflow: hidden;           /* <-- clips children to the rounded corners */
+}
+
+/* Make the table behave inside the container */
+.codehilitetable {
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;        /* keeps the code cell from pushing past the edge */
+}
+.codehilitetable td {
+  vertical-align: top;
+  padding: 0.8rem 1rem;       /* mimic the spacing you had on #preview pre */
+}
+
+/* Let the code area scroll horizontally inside the block */
+.codehilitetable td.code > div {
+  overflow-x: auto;           /* horizontal scroll lives here */
+  overflow-y: hidden;
+}
+
+/* Avoid double scrollbars and stray spacing */
+.codehilitetable td.code pre {
+  margin: 0;
+}
+.codehilitetable td.linenos pre {
+  margin: 0;
+  white-space: pre;
+}
+
+/* Optional: subtle gutter background so the edge reads cleanly */
+.codehilitetable td.linenos {
+  background: rgba(255,255,255,0.02);
+  border-right: 1px solid var(--border);
+}
