@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Markdown Previewer</title>
+
+    <!-- PyScript 2025.8.1 -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+
+    <style>
+      :root {
+        --bg: #0b0e14;
+        --panel: #0f141c;
+        --muted: #a0a7b4;
+        --text: #e6e8eb;
+        --border: #1b2230;
+        --accent: #4ea1ff;
+        --accent-weak: #264a79;
+        --gap: 1rem;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+        line-height: 1.45;
+      }
+      header {
+        padding: 0.9rem var(--gap);
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 0.75rem 1rem;
+      }
+      .title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 700;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.2rem 0.6rem;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--muted);
+        border-radius: 999px;
+        font-size: 0.8rem;
+        text-decoration: none;
+      }
+      .badge:hover {
+        box-shadow: 0 0 0 3px rgba(78,161,255,0.12) inset;
+        border-color: var(--accent);
+      }
+      .badge.loading {
+        pointer-events: none; /* non-clickable, but looks normal */
+      }
+      .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--accent-weak);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      #status {
+        color: var(--muted);
+        font-size: 0.9rem;
+        justify-self: end;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
+        padding: var(--gap);
+      }
+      .pane {
+        min-height: calc(100vh - 92px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--panel);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .pane-header {
+        margin: 0;
+        padding: 0.7rem 0.9rem;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .pane-header label {
+        font-weight: normal;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      textarea {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        padding: 0.9rem;
+        resize: none;
+        outline: none;
+        color: var(--text);
+        background: transparent;
+        font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        tab-size: 2;
+      }
+
+      #preview {
+        padding: 0.9rem 1rem 2rem;
+        overflow: auto;
+      }
+      #preview h1, #preview h2, #preview h3 { margin: 1.2rem 0 0.5rem; }
+      #preview a { color: var(--accent); }
+      #preview pre {
+        background: #0a0f18;
+        padding: 0.8rem;
+        overflow: auto;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      #preview code {
+        font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+      #preview blockquote {
+        margin: 1rem 0;
+        padding-left: 1rem;
+        border-left: 4px solid var(--accent-weak);
+        color: #c2c7d0;
+      }
+
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+        .pane { min-height: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <span>Markdown Previewer</span>
+        <a id="pyscript-badge" class="badge loading" role="status" aria-live="polite">
+          <strong>PyScript</strong>
+          <span id="badge-extra" class="spinner" aria-label="Loading"></span>
+        </a>
+      </div>
+      <span id="status" aria-live="polite">Starting…</span>
+    </header>
+
+    <main class="layout" aria-live="polite">
+      <section class="pane">
+        <h2 class="pane-header">Editor</h2>
+        <textarea id="editor" aria-label="Markdown editor" py-input="on_input">
+# 👋 Welcome
+
+This **dark** previewer is powered by *PyScript* 🐍 — type on the left, see updates on the right ➡️
+
+---
+
+## ✨ Highlights
+
+- ⚡ **Live preview** while you type
+- 📚 Click the **PyScript** badge (top) to jump to the docs (after it loads)
+- ✅ Clean typography and dark theme
+- 📝 Inline `code`, headings, lists, and quotes
+- 🎯 Lightweight — single `index.html`, no extra files
+
+---
+
+## 📋 Quick Tips
+
+- Use `#` through `######` for headings
+- Add horizontal rules with three dashes:
+---
+- Create lists with `-` or numbers:
+  - 🚀 Ship ideas
+  - 🧪 Test quickly
+  - 🔁 Iterate
+
+> “Simplicity is the soul of efficiency.” — Austin Freeman
+        </textarea>
+      </section>
+
+      <section class="pane" id="preview-pane">
+        <div class="pane-header">
+          <span>Preview</span>
+          <label><input id="show-html" type="checkbox" py-change="on_mode_toggle" /> Show HTML</label>
+        </div>
+        <div id="preview" aria-label="Rendered markdown preview"></div>
+      </section>
+    </main>
+
+    <script type="py" config='{"packages": ["markdown"]}'>
+from pyscript import document
+from markdown import markdown as md
+from js import setTimeout, clearTimeout
+from pyodide.ffi import create_proxy
+import re
+
+status_text = document.querySelector("#status")
+editor = document.querySelector("#editor")
+preview = document.querySelector("#preview")
+badge = document.querySelector("#pyscript-badge")
+badge_extra = document.querySelector("#badge-extra")
+show_html = document.querySelector("#show-html")
+
+_idle_timer = None
+IDLE_MS = 250
+
+def _infer_pyscript_version() -> str:
+    urls = []
+    for s in document.querySelectorAll('script[type="module"]'):
+        src = s.getAttribute("src")
+        if src: urls.append(src)
+    for l in document.querySelectorAll('link[rel="stylesheet"]'):
+        href = l.getAttribute("href")
+        if href: urls.append(href)
+    pat = re.compile(r"/releases/([^/]+)/")
+    for u in urls:
+        m = pat.search(u)
+        if m: return m.group(1)
+    return "?"
+
+def set_status_rendering():
+    status_text.innerText = "Rendering…"
+
+def set_status_rendered():
+    status_text.innerText = "Rendered ✓"
+
+def _paint(html: str):
+    if show_html.checked:
+        preview.innerHTML = "<pre id='html-src'></pre>"
+        document.querySelector("#html-src").innerText = html
+    else:
+        preview.innerHTML = html
+
+def render_markdown():
+    try:
+        text = editor.value or ""
+        html = md(text, extensions=["fenced_code", "sane_lists", "toc"])
+        _paint(html)
+    except Exception as exc:
+        preview.innerHTML = f"<pre>Render error: {exc!r}</pre>"
+        status_text.innerText = "Render error"
+
+def _mark_rendered_cb(*args, **kwargs):
+    set_status_rendered()
+
+_mark_rendered_proxy = create_proxy(_mark_rendered_cb)
+
+def on_input(event=None):
+    global _idle_timer
+    set_status_rendering()
+    render_markdown()
+    if _idle_timer is not None:
+        clearTimeout(_idle_timer)
+    _idle_timer = setTimeout(_mark_rendered_proxy, IDLE_MS)
+
+def on_mode_toggle(event=None):
+    on_input()
+
+def enable_badge_link():
+    version = _infer_pyscript_version()
+    badge_extra.classList.remove("spinner")
+    badge_extra.setAttribute("aria-label", "PyScript version")
+    badge_extra.innerText = version
+    badge.setAttribute("href", f"https://docs.pyscript.net/{version}/")
+    badge.setAttribute("target", "_blank")
+    badge.setAttribute("rel", "noopener noreferrer")
+    badge.classList.remove("loading")  # re-enable click
+
+enable_badge_link()
+render_markdown()
+set_status_rendered()
+    </script>
+  </body>
+</html>
