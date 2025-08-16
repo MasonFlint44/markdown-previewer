@@ -19,8 +19,11 @@ span.linenos.special {
 
 /* Code block base */
 .codehilite {
-  background: #1e1e1e;
+  /* Override Monaco Dark+ default to match rest of theme */
+  /* background: #1e1e1e; */
+  background: #0a0f18;
   color: #d4d4d4;
+  border-radius: 8px;
 }
 .codehilite .hll { background-color: #264f78; } /* highlighted line */
 
