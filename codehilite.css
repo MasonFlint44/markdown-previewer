@@ -3,13 +3,26 @@ pre { line-height: 125%; }
 
 /* Line numbers */
 td.linenos .normal,
-span.linenos { color: #858585; background: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos {
+  color: #858585;
+  background: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 td.linenos .special,
-span.linenos.special { color: #ffffff; background-color: #4b5632; padding-left: 5px; padding-right: 5px; }
+span.linenos.special {
+  color: #ffffff;
+  background-color: #4b5632;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 /* Code block base */
-.codehilite { background: #1e1e1e; color: #d4d4d4; }
-.codehilite .hll { background-color: #264f78; } /* highlight line */
+.codehilite {
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+.codehilite .hll { background-color: #264f78; } /* highlighted line */
 
 /* Comments */
 .codehilite .c,
@@ -17,13 +30,22 @@ span.linenos.special { color: #ffffff; background-color: #4b5632; padding-left: 
 .codehilite .cm,
 .codehilite .c1,
 .codehilite .cs,
-.codehilite .cpf { color: #6a9955; font-style: italic; } /* Comment */
+.codehilite .cpf {
+  color: #6a9955;
+  font-style: italic;
+}
 
 /* Errors / diagnostics */
-.codehilite .err { color: #f44747; background: transparent; border: 1px solid #f44747; }
+.codehilite .err {
+  color: #f44747;
+  background: transparent;
+  border: 1px solid #f44747;
+}
 .codehilite .gr,
-.codehilite .gt { color: #f44747; }
-.codehilite .gd { color: #f44747; }
+.codehilite .gt,
+.codehilite .gd {
+  color: #f44747;
+}
 .codehilite .gi { color: #b5cea8; }
 
 /* Keywords */
@@ -32,12 +54,15 @@ span.linenos.special { color: #ffffff; background-color: #4b5632; padding-left: 
 .codehilite .kd,
 .codehilite .kn,
 .codehilite .kp,
-.codehilite .kr { color: #c586c0; font-weight: normal; }
-.codehilite .kt { color: #4ec9b0; } /* type keywords */
+.codehilite .kr {
+  color: #569cd6; /* blue */
+  font-weight: normal;
+}
 
-/* Operators / punctuation */
+/* Operator & punctuation */
 .codehilite .o { color: #d4d4d4; }
-.codehilite .ow { color: #c586c0; font-weight: normal; }
+.codehilite .ow { color: #569cd6; } /* operator.word same as keyword */
+.codehilite .p  { color: #dcdcaa; } /* punctuation bright yellow */
 
 /* Numbers */
 .codehilite .m,
@@ -46,42 +71,47 @@ span.linenos.special { color: #ffffff; background-color: #4b5632; padding-left: 
 .codehilite .mh,
 .codehilite .mi,
 .codehilite .mo,
-.codehilite .il { color: #b5cea8; }
+.codehilite .il {
+  color: #b5cea8;
+}
 
 /* Strings */
 .codehilite .s,
-.codehilite .sa,
 .codehilite .sb,
 .codehilite .sc,
 .codehilite .dl,
 .codehilite .sd,
 .codehilite .s1,
-.codehilite .s2,
-.codehilite .sh { color: #ce9178; }
-.codehilite .se { color: #d7ba7d; font-weight: normal; }  /* escapes */
-.codehilite .si,
-.codehilite .ss { color: #d7ba7d; }                      /* interpolations/symbols */
-.codehilite .sr { color: #d16969; }                       /* regex */
+.codehilite .sh {
+  color: #ce9178; /* orange */
+}
+.codehilite .s2 { color: #ce9178; } /* double-quoted string */
+.codehilite .sa { color: #569cd6; } /* string affix -> blue */
+.codehilite .si { color: #569cd6; } /* string interpolation -> blue */
+.codehilite .se,
+.codehilite .ss { color: #d7ba7d; } /* escapes/symbols */
+.codehilite .sr { color: #d16969; } /* regex */
 
 /* Names */
-.codehilite .na { color: #9cdcfe; }        /* attribute */
-.codehilite .nb { color: #4fc1ff; }        /* builtin */
-.codehilite .bp { color: #4fc1ff; }        /* builtin pseudo */
+.codehilite .n  { color: #9cdcfe; } /* base name */
+.codehilite .na { color: #9cdcfe; } /* attribute */
+.codehilite .nb { color: #4fc1ff; } /* builtin */
+.codehilite .bp { color: #4fc1ff; } /* builtin pseudo */
 .codehilite .nc { color: #4ec9b0; font-weight: bold; } /* class */
 .codehilite .nn { color: #4ec9b0; font-weight: bold; } /* namespace */
-.codehilite .no { color: #4fc1ff; }        /* constant */
-.codehilite .nd { color: #c586c0; }        /* decorator */
-.codehilite .ne { color: #c586c0; font-weight: normal; } /* exception-ish */
+.codehilite .no { color: #4fc1ff; } /* constant */
+.codehilite .nd { color: #c586c0; } /* decorator */
+.codehilite .ne { color: #4ec9b0; } /* exception -> green */
 .codehilite .nf,
-.codehilite .fm { color: #dcdCAA; }        /* function / magic func */
+.codehilite .fm { color: #dcdcaa; } /* function / magic func */
 .codehilite .nv,
 .codehilite .vc,
 .codehilite .vg,
 .codehilite .vi,
-.codehilite .vm { color: #9cdcfe; }        /* variables */
+.codehilite .vm { color: #9cdcfe; } /* variables */
 
 /* HTML/XML tags */
-.codehilite .nt { color: #569cd6; font-weight: normal; } /* tag name */
+.codehilite .nt { color: #569cd6; } /* tag name */
 
 /* Generics / misc */
 .codehilite .gh,
@@ -90,7 +120,7 @@ span.linenos.special { color: #ffffff; background-color: #4b5632; padding-left: 
 .codehilite .gs { font-weight: bold; }
 .codehilite .ge { font-style: italic; }
 .codehilite .go { color: #808080; }
-.codehilite .w  { color: #d4d4d4; opacity: 0.3; }        /* visible whitespace */
+.codehilite .w  { color: #d4d4d4; opacity: 0.3; } /* whitespace */
 
-/* Optional: make selection inside code feel like VS Code */
+/* Optional: selection inside code */
 .codehilite ::selection { background: #264f78; color: inherit; }
