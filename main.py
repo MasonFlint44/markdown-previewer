@@ -44,7 +44,7 @@ def _paint(html: str):
 def render_markdown():
     try:
         text = editor.value or ""
-        html = md(text, extensions=["fenced_code", "sane_lists", "toc"])
+        html = md(text, extensions=["fenced_code", "sane_lists", "toc", "codehilite"])
         _paint(html)
     except Exception as exc:
         preview.innerHTML = f"<pre>Render error: {exc!r}</pre>"

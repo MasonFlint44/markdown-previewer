@@ -1,5 +1,6 @@
 name = "Markdown Previewer"
 description = "A simple Markdown previewer using PyScript."
 packages = [
-    "markdown"
+    "markdown",
+    "Pygments",
 ]
