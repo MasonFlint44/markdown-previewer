@@ -109,6 +109,7 @@ span.linenos.special {
 .codehilite .vg,
 .codehilite .vi,
 .codehilite .vm { color: #9cdcfe; } /* variables */
+.codehilite .nx { color: #9cdcfe; } /* other names -> light blue */
 
 /* HTML/XML tags */
 .codehilite .nt { color: #569cd6; } /* tag name */
