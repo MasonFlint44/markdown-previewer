@@ -158,14 +158,6 @@ span.linenos.special {
   vertical-align: top;
 }
 
-/* pad both sides the same so line 1 aligns perfectly */
-.codehilitetable td.linenos {
-  padding: 0.8rem 0.6rem 0.8rem 0.8rem; /* top/right/bottom/left */
-}
-.codehilitetable td.code {
-  padding: 0.8rem 0.8rem 0.8rem 0.6rem;
-}
-
 /* optional: subtle gutter styling */
 .codehilitetable td.linenos {
   color: #858585;
