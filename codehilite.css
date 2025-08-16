@@ -162,7 +162,7 @@ span.linenos.special {
 }
 
 /* optional: subtle gutter styling */
-.codehilitetable td.linenos {
+/* .codehilitetable td.linenos {
   color: #858585;
   border-right: 1px solid #1b2230;
-}
+} */
