@@ -150,7 +150,6 @@ textarea {
     overflow: auto;
     border-radius: 8px;
     border: 1px solid var(--border);
-    white-space: pre-wrap;
     word-break: break-word;
 }
 

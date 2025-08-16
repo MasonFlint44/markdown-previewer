@@ -125,3 +125,49 @@ span.linenos.special {
 
 /* Optional: selection inside code */
 .codehilite ::selection { background: #264f78; color: inherit; }
+
+/* --- Alignment fixes for Pygments table layout --- */
+.codehilite,
+.codehilite pre,
+.codehilite code,
+.codehilite .linenodiv pre {
+  /* same font + line-height everywhere */
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}
+
+/* prevent wrapping so numbers match lines exactly */
+.codehilite pre,
+.codehilite code,
+.codehilite .linenodiv pre {
+  white-space: pre;
+}
+
+/* remove stray spacing that throws off the first line */
+.codehilite pre,
+.codehilite .linenodiv pre {
+  margin: 0;
+}
+
+/* make table cells line up at the top and keep consistent padding */
+.codehilitetable {
+  width: 100%;
+  border-spacing: 0;
+}
+.codehilitetable td {
+  vertical-align: top;
+}
+
+/* pad both sides the same so line 1 aligns perfectly */
+.codehilitetable td.linenos {
+  padding: 0.8rem 0.6rem 0.8rem 0.8rem; /* top/right/bottom/left */
+}
+.codehilitetable td.code {
+  padding: 0.8rem 0.8rem 0.8rem 0.6rem;
+}
+
+/* optional: subtle gutter styling */
+.codehilitetable td.linenos {
+  color: #858585;
+  border-right: 1px solid #1b2230;
+}
