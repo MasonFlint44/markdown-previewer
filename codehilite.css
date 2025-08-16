@@ -55,14 +55,14 @@ span.linenos.special {
 .codehilite .kn,
 .codehilite .kp,
 .codehilite .kr {
-  color: #c586c0; /* purple */
+  color: #569cd6; /* blue */
   font-weight: normal;
 }
 
 /* Operator & punctuation */
 .codehilite .o  { color: #d4d4d4; }
-.codehilite .ow { color: #c586c0; } /* operator.word same as keyword */
-.codehilite .p  { color: #c586c0; } /* punctuation same purple as keyword */
+.codehilite .ow { color: #569cd6; } /* operator.word same as keyword */
+.codehilite .p  { color: #c586c0; } /* punctuation -> purple */
 
 /* Numbers */
 .codehilite .m,
