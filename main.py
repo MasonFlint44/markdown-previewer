@@ -54,7 +54,7 @@ def render_markdown():
         text = editor.value or ""
         html = md(
             text,
-            extensions=["fenced_code", "sane_lists", "toc", "codehilite"],
+            extensions=["fenced_code", "sane_lists", "toc", "codehilite", "tables"],
             extension_configs={
                 "codehilite": {
                     "guess_lang": False,
