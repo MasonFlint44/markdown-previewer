@@ -281,9 +281,7 @@ span.linenos.special {
 
 /* Gutter (line numbers) */
 .codehilitetable td.linenos {
-    width: 4.5ch;
-    /* fixed gutter width */
-    padding: 0.8rem 0.6rem 0.8rem 1rem;
+    width: 9ch;
     white-space: nowrap;
     text-align: right;
     user-select: none;
@@ -299,8 +297,7 @@ span.linenos.special {
 
 /* Code column */
 .codehilitetable td.code {
-    width: auto;
-    padding: 0.8rem 1rem 0.8rem 0.6rem;
+    padding-right: 0.8rem;
 }
 
 .codehilitetable td.code pre {

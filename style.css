@@ -146,7 +146,6 @@ textarea {
 
 #preview pre {
     padding: 0.8rem;
-    overflow: auto;
     word-break: break-word;
 }
 
