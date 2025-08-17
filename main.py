@@ -42,27 +42,47 @@ def set_status_rendered():
 
 
 def _paint(html: str):
-    if show_html.checked:
-        preview.innerHTML = "<pre id='html-src'></pre>"
-        document.querySelector("#html-src").innerText = html
-    else:
-        preview.innerHTML = html
+    # Always paint final HTML directly; code block styling (when Show HTML is on)
+    # is handled in render_markdown() by re-parsing with a fenced block.
+    preview.innerHTML = html
+
+
+def _render_with_extensions(text: str) -> str:
+    """Helper to render markdown with your chosen extensions/config."""
+    return md(
+        text,
+        extensions=[
+            "fenced_code",
+            "sane_lists",
+            "toc",
+            "codehilite",
+            "tables",
+            "nl2br",
+            "footnotes",
+        ],
+        extension_configs={
+            "codehilite": {
+                "guess_lang": False,
+                "linenums": True,
+            }
+        },
+    )
 
 
 def render_markdown():
     try:
-        text = editor.value or ""
-        html = md(
-            text,
-            extensions=["fenced_code", "sane_lists", "toc", "codehilite", "tables", "nl2br", "footnotes"],
-            extension_configs={
-                "codehilite": {
-                    "guess_lang": False,
-                    "linenums": True,
-                }
-            },
-        )
-        _paint(html)
+        source = editor.value or ""
+        # First pass: normal markdown -> HTML preview
+        rendered_html = _render_with_extensions(source)
+
+        if show_html.checked:
+            # Show the HTML source *as code*, using your code block styling.
+            fenced = f"```html\n{rendered_html}\n```"
+            display_html = _render_with_extensions(fenced)
+        else:
+            display_html = rendered_html
+
+        _paint(display_html)
     except Exception as exc:
         preview.innerHTML = f"<pre>Render error: {exc!r}</pre>"
         status_text.innerText = "Render error"
