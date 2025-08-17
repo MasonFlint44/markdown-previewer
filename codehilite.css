@@ -152,11 +152,13 @@ span.linenos.special {
 }
 
 .codehilite .bp {
-    color: #4ec9b0;
+    color: #9cdcfe;
+    /* builtins (self, cls) now light blue */
 }
 
 .codehilite .nc {
-    color: #d7ba7d;
+    color: #4ec9b0;
+    /* classes now green */
 }
 
 .codehilite .nn {
