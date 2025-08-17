@@ -23,11 +23,13 @@ span.linenos.special {
 /* Code block base */
 .codehilite {
     /* Override Monaco Dark+ default to match rest of theme */
-    /* background: #1e1e1e; */
     background: #0a0f18;
     color: #d4d4d4;
     border-radius: 8px;
     border: 1px solid var(--border);
+    display: block;
+    overflow: hidden;
+    /* clips children to rounded corners */
 }
 
 .codehilite .hll {
@@ -88,9 +90,8 @@ span.linenos.special {
 /* operator.word same as keyword */
 .codehilite .p {
     color: #c586c0;
+    /* purple */
 }
-
-/* punctuation -> purple */
 
 /* Numbers */
 .codehilite .m,
@@ -210,8 +211,6 @@ span.linenos.special {
 }
 
 /* other names -> light blue */
-
-/* HTML/XML tags */
 .codehilite .nt {
     color: #569cd6;
 }
@@ -243,8 +242,6 @@ span.linenos.special {
     opacity: 0.3;
 }
 
-/* whitespace */
-
 /* Optional: selection inside code */
 .codehilite ::selection {
     background: #264f78;
@@ -256,74 +253,94 @@ span.linenos.special {
 .codehilite pre,
 .codehilite code,
 .codehilite .linenodiv pre {
-    /* same font + line-height everywhere */
     font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 }
 
-/* prevent wrapping so numbers match lines exactly */
 .codehilite pre,
 .codehilite code,
 .codehilite .linenodiv pre {
     white-space: pre;
 }
 
-/* remove stray spacing that throws off the first line */
 .codehilite pre,
 .codehilite .linenodiv pre {
     margin: 0;
 }
 
-/* make table cells line up at the top and keep consistent padding */
+/* Table layout */
 .codehilitetable {
     width: 100%;
     border-spacing: 0;
+    table-layout: fixed;
 }
 
 .codehilitetable td {
     vertical-align: top;
 }
 
-/* optional: subtle gutter styling */
-/* .codehilitetable td.linenos {
-  color: #858585;
-  border-right: 1px solid #1b2230;
-} */
-
-/* Keep the table clipped to the rounded container */
-.codehilite {
-  display: block;
-  overflow: hidden;           /* <-- clips children to the rounded corners */
-}
-
-/* Make the table behave inside the container */
-.codehilitetable {
-  width: 100%;
-  border-spacing: 0;
-  table-layout: fixed;        /* keeps the code cell from pushing past the edge */
-}
-.codehilitetable td {
-  vertical-align: top;
-  padding: 0.8rem 1rem;       /* mimic the spacing you had on #preview pre */
-}
-
-/* Let the code area scroll horizontally inside the block */
-.codehilitetable td.code > div {
-  overflow-x: auto;           /* horizontal scroll lives here */
-  overflow-y: hidden;
-}
-
-/* Avoid double scrollbars and stray spacing */
-.codehilitetable td.code pre {
-  margin: 0;
-}
-.codehilitetable td.linenos pre {
-  margin: 0;
-  white-space: pre;
-}
-
-/* Optional: subtle gutter background so the edge reads cleanly */
+/* Gutter (line numbers) */
 .codehilitetable td.linenos {
-  background: rgba(255,255,255,0.02);
-  border-right: 1px solid var(--border);
+    width: 3.5ch;
+    /* fixed gutter width */
+    padding: 0.8rem 0.6rem 0.8rem 1rem;
+    white-space: nowrap;
+    text-align: right;
+    user-select: none;
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 1px solid var(--border);
+}
+
+.codehilitetable td.linenos pre {
+    margin: 0;
+    white-space: pre;
+}
+
+/* Code column */
+.codehilitetable td.code {
+    width: auto;
+    padding: 0.8rem 1rem 0.8rem 0.6rem;
+}
+
+.codehilitetable td.code pre {
+    margin: 0;
+}
+
+/* Horizontal scroll inside code cell */
+.codehilitetable td.code>div {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: var(--accent-weak) transparent;
+}
+
+/* Chrome/Edge/Safari scrollbar styling */
+.codehilitetable td.code>div::-webkit-scrollbar {
+    height: 8px;
+}
+
+.codehilitetable td.code>div::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.codehilitetable td.code>div::-webkit-scrollbar-thumb {
+    background: var(--accent-weak);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.codehilitetable td.code>div:hover::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+.codehilitetable td.code>div::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.codehilitetable td.code>div::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
 }
