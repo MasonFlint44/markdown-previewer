@@ -90,8 +90,9 @@ span.linenos.special {
 /* operator.word same as keyword */
 .codehilite .p {
     color: #c586c0;
-    /* purple */
 }
+
+/* punctuation -> purple */
 
 /* Numbers */
 .codehilite .m,
@@ -113,9 +114,9 @@ span.linenos.special {
 .codehilite .s1,
 .codehilite .sh {
     color: #ce9178;
-    /* orange */
 }
 
+/* orange */
 .codehilite .s2 {
     color: #ce9178;
 }
@@ -257,10 +258,13 @@ span.linenos.special {
         "Liberation Mono", "Courier New", monospace;
 }
 
+/* Ensure we never wrap inside highlighted blocks (overrides #preview pre) */
 .codehilite pre,
 .codehilite code,
 .codehilite .linenodiv pre {
     white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .codehilite pre,
@@ -271,6 +275,7 @@ span.linenos.special {
 /* Table layout */
 .codehilitetable {
     width: 100%;
+    max-width: 100%;
     border-spacing: 0;
     table-layout: auto;
     /* allow dynamic sizing */
@@ -280,15 +285,17 @@ span.linenos.special {
     vertical-align: top;
 }
 
-/* Gutter (line numbers) */
+/* Gutter (line numbers) — auto-size to digits, never scroll */
 .codehilitetable td.linenos {
     width: 1%;
-    /* minimal width hint */
+    /* minimal-width hint */
     min-width: max-content;
-    /* fit widest number */
+    /* expand to fit widest number */
     white-space: nowrap;
     text-align: right;
     user-select: none;
+    background: transparent;
+    border-right: none;
     overflow: hidden;
     font-variant-numeric: tabular-nums;
 }
@@ -299,28 +306,35 @@ span.linenos.special {
     overflow: hidden;
 }
 
-/* Code column */
+/* Code column — may shrink below content to allow inner scroll */
 .codehilitetable td.code {
     width: 100%;
+    /* take remaining space */
+    min-width: 0;
+    /* allow shrinking below min-content */
 }
 
 .codehilitetable td.code pre {
     margin: 0;
 }
 
-/* Horizontal scroll inside code cell */
+/* Horizontal scroll inside code cell (line numbers stay fixed) */
 .codehilitetable td.code>div {
     display: block;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+
+    /* prevent the pre's intrinsic width from affecting column sizing */
+    contain: inline-size;
+
+    /* match theme scrollbars */
     scrollbar-width: thin;
     /* Firefox */
     scrollbar-color: var(--accent-weak) transparent;
 }
 
-/* Chrome/Edge/Safari scrollbar styling */
 .codehilitetable td.code>div::-webkit-scrollbar {
     height: 8px;
 }
