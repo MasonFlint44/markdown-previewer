@@ -257,3 +257,46 @@ textarea {
     height: 0;
     display: none;
 }
+
+/* Global page scrollbar styling */
+html, body {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--accent-weak) transparent;
+}
+
+/* Chrome/Edge/Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-weak);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
