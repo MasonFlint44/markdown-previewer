@@ -294,6 +294,7 @@ span.linenos.special {
     border-right: none;
     overflow: hidden;
     font-variant-numeric: tabular-nums;
+    border-right: 1px solid var(--border);
 }
 
 .codehilitetable td.linenos pre {
