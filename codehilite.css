@@ -273,6 +273,7 @@ span.linenos.special {
     width: 100%;
     border-spacing: 0;
     table-layout: auto;
+    /* allow dynamic sizing */
 }
 
 .codehilitetable td {
@@ -281,12 +282,15 @@ span.linenos.special {
 
 /* Gutter (line numbers) */
 .codehilitetable td.linenos {
-    width: 1%;                 /* take minimum space */
-    white-space: nowrap;       /* don’t wrap numbers */
+    width: 1%;
+    /* minimal width hint */
+    min-width: max-content;
+    /* fit widest number */
+    white-space: nowrap;
     text-align: right;
     user-select: none;
+    overflow: hidden;
     font-variant-numeric: tabular-nums;
-    overflow: hidden; /* prevent accidental scrollbar */
 }
 
 .codehilitetable td.linenos pre {
@@ -297,7 +301,7 @@ span.linenos.special {
 
 /* Code column */
 .codehilitetable td.code {
-    padding-right: 0.8rem;
+    width: 100%;
 }
 
 .codehilitetable td.code pre {
@@ -306,6 +310,9 @@ span.linenos.special {
 
 /* Horizontal scroll inside code cell */
 .codehilitetable td.code>div {
+    display: block;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
