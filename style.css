@@ -214,13 +214,3 @@ textarea {
     display: none;
 }
 
-/* --- Dark themed checkbox --- */
-input[type="checkbox"] {
-    accent-color: var(--accent);
-    background-color: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
