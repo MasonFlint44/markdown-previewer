@@ -214,3 +214,38 @@ textarea {
     display: none;
 }
 
+/* --- Scrollbar styling for previewer (when showing raw HTML) --- */
+#preview {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--accent-weak) transparent;
+}
+
+#preview::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+#preview::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#preview::-webkit-scrollbar-thumb {
+    background: var(--accent-weak);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+#preview:hover::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+#preview::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+#preview::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
