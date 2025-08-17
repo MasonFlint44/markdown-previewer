@@ -281,7 +281,8 @@ span.linenos.special {
 
 /* Gutter (line numbers) */
 .codehilitetable td.linenos {
-    width: 9ch;
+    width: auto;                 /* no fixed width */
+    min-width: max-content;      /* expand to fit widest number */
     white-space: nowrap;
     text-align: right;
     user-select: none;
