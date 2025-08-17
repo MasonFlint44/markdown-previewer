@@ -283,7 +283,6 @@ span.linenos.special {
 .codehilitetable td.linenos {
     width: 1%;                 /* take minimum space */
     white-space: nowrap;       /* don’t wrap numbers */
-    white-space: nowrap;
     text-align: right;
     user-select: none;
     font-variant-numeric: tabular-nums;
