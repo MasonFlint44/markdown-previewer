@@ -18,21 +18,17 @@ span.linenos.special {
 
 /* Code block base */
 .codehilite {
-    /* Override Monaco Dark+ default to match rest of theme */
     background: #0a0f18;
     color: #d4d4d4;
     border-radius: 8px;
     border: 1px solid var(--border);
     display: block;
     overflow: hidden;
-    /* clips children to rounded corners */
 }
 
 .codehilite .hll {
     background-color: #264f78;
 }
-
-/* highlighted line */
 
 /* Comments */
 .codehilite .c,
@@ -64,14 +60,17 @@ span.linenos.special {
 
 /* Keywords */
 .codehilite .k,
-.codehilite .kc,
 .codehilite .kd,
 .codehilite .kn,
 .codehilite .kp,
 .codehilite .kr {
     color: #569cd6;
-    /* blue */
     font-weight: normal;
+}
+
+.codehilite .kc {
+    color: #ce9178;
+    /* constants */
 }
 
 /* Operator & punctuation */
@@ -83,22 +82,23 @@ span.linenos.special {
     color: #569cd6;
 }
 
-/* operator.word same as keyword */
 .codehilite .p {
     color: #c586c0;
 }
-
-/* punctuation -> purple */
 
 /* Numbers */
 .codehilite .m,
 .codehilite .mb,
 .codehilite .mf,
-.codehilite .mh,
 .codehilite .mi,
 .codehilite .mo,
 .codehilite .il {
     color: #b5cea8;
+}
+
+.codehilite .mh {
+    color: #ce9178;
+    /* hex numbers */
 }
 
 /* Strings */
@@ -112,88 +112,72 @@ span.linenos.special {
     color: #ce9178;
 }
 
-/* orange */
 .codehilite .s2 {
     color: #ce9178;
 }
 
-/* double-quoted string */
 .codehilite .sa {
     color: #569cd6;
 }
 
-/* string affix -> blue */
 .codehilite .si {
     color: #569cd6;
 }
 
-/* string interpolation -> blue */
 .codehilite .se,
 .codehilite .ss {
     color: #d7ba7d;
 }
 
-/* escapes/symbols */
 .codehilite .sr {
     color: #d16969;
 }
-
-/* regex */
 
 /* Names */
 .codehilite .n {
     color: #d4d4d4;
 }
 
-/* base name -> white */
 .codehilite .na {
     color: #9cdcfe;
 }
 
-/* attribute */
 .codehilite .nb {
     color: #4ec9b0;
 }
 
-/* builtin -> green */
 .codehilite .bp {
     color: #4ec9b0;
 }
 
-/* builtin pseudo -> green */
 .codehilite .nc {
-    color: #4ec9b0;
+    color: #d7ba7d;
+    /* class names same as nt */
     font-weight: bold;
 }
 
-/* class */
 .codehilite .nn {
     color: #4ec9b0;
     font-weight: bold;
 }
 
-/* namespace */
 .codehilite .no {
     color: #4fc1ff;
 }
 
-/* constant */
 .codehilite .nd {
     color: #c586c0;
 }
 
-/* decorator */
 .codehilite .ne {
     color: #4ec9b0;
 }
 
-/* exception -> green */
 .codehilite .nf,
 .codehilite .fm {
     color: #dcdcaa;
 }
 
-/* function / magic func */
 .codehilite .nv,
 .codehilite .vc,
 .codehilite .vg,
@@ -202,17 +186,14 @@ span.linenos.special {
     color: #9cdcfe;
 }
 
-/* variables */
 .codehilite .nx {
     color: #9cdcfe;
 }
 
-/* other names -> light blue */
 .codehilite .nt {
-    color: #569cd6;
+    color: #d7ba7d;
+    /* tag names */
 }
-
-/* tag name */
 
 /* Generics / misc */
 .codehilite .gh,
@@ -254,7 +235,6 @@ span.linenos.special {
         "Liberation Mono", "Courier New", monospace;
 }
 
-/* Ensure we never wrap inside highlighted blocks (overrides #preview pre) */
 .codehilite pre,
 .codehilite code,
 .codehilite .linenodiv pre {
@@ -274,24 +254,19 @@ span.linenos.special {
     max-width: 100%;
     border-spacing: 0;
     table-layout: auto;
-    /* allow dynamic sizing */
 }
 
 .codehilitetable td {
     vertical-align: top;
 }
 
-/* Gutter (line numbers) — auto-size to digits, never scroll */
+/* Gutter (line numbers) */
 .codehilitetable td.linenos {
     width: 1%;
-    /* minimal-width hint */
     min-width: max-content;
-    /* expand to fit widest number */
     white-space: nowrap;
     text-align: right;
     user-select: none;
-    background: transparent;
-    border-right: none;
     overflow: hidden;
     font-variant-numeric: tabular-nums;
     border-right: 1px solid var(--border);
@@ -303,12 +278,10 @@ span.linenos.special {
     overflow: hidden;
 }
 
-/* Code column — may shrink below content to allow inner scroll */
+/* Code column */
 .codehilitetable td.code {
     width: 100%;
-    /* take remaining space */
     min-width: 0;
-    /* allow shrinking below min-content */
     padding-right: 0.8rem;
 }
 
@@ -316,20 +289,16 @@ span.linenos.special {
     margin: 0;
 }
 
-/* Horizontal scroll inside code cell (line numbers stay fixed) */
+/* Horizontal scroll inside code cell */
 .codehilitetable td.code>div {
     display: block;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-
-    /* prevent the pre's intrinsic width from affecting column sizing */
     contain: inline-size;
 
-    /* match theme scrollbars */
     scrollbar-width: thin;
-    /* Firefox */
     scrollbar-color: var(--accent-weak) transparent;
 }
 
