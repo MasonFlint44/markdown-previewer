@@ -8,16 +8,12 @@ td.linenos .normal,
 span.linenos {
     color: #858585;
     background: transparent;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 td.linenos .special,
 span.linenos.special {
     color: #ffffff;
     background-color: #4b5632;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 /* Code block base */
@@ -312,6 +308,7 @@ span.linenos.special {
     /* take remaining space */
     min-width: 0;
     /* allow shrinking below min-content */
+    padding-right: 0.8rem;
 }
 
 .codehilitetable td.code pre {
