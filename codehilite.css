@@ -272,7 +272,7 @@ span.linenos.special {
 .codehilitetable {
     width: 100%;
     border-spacing: 0;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 .codehilitetable td {
@@ -281,8 +281,8 @@ span.linenos.special {
 
 /* Gutter (line numbers) */
 .codehilitetable td.linenos {
-    width: auto;                 /* no fixed width */
-    min-width: max-content;      /* expand to fit widest number */
+    width: 1%;                 /* take minimum space */
+    white-space: nowrap;       /* don’t wrap numbers */
     white-space: nowrap;
     text-align: right;
     user-select: none;
