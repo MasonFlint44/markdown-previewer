@@ -281,19 +281,20 @@ span.linenos.special {
 
 /* Gutter (line numbers) */
 .codehilitetable td.linenos {
-    width: 3.5ch;
+    width: 4.5ch;
     /* fixed gutter width */
     padding: 0.8rem 0.6rem 0.8rem 1rem;
     white-space: nowrap;
     text-align: right;
     user-select: none;
-    background: rgba(255, 255, 255, 0.02);
-    border-right: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+    overflow: hidden; /* prevent accidental scrollbar */
 }
 
 .codehilitetable td.linenos pre {
     margin: 0;
     white-space: pre;
+    overflow: hidden;
 }
 
 /* Code column */
