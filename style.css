@@ -169,3 +169,47 @@ textarea {
         min-height: auto;
     }
 }
+
+/* Editor scrollbar — match code block styling */
+#editor {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-weak) transparent;
+}
+
+/* Chrome/Edge/Safari */
+#editor::-webkit-scrollbar {
+    width: 8px;
+    /* vertical */
+    height: 8px;
+    /* if horizontal shows up */
+}
+
+#editor::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#editor::-webkit-scrollbar-thumb {
+    background: var(--accent-weak);
+    /* #264a79 */
+    border-radius: 999px;
+    border: 2px solid transparent;
+    /* pill effect */
+    background-clip: padding-box;
+}
+
+#editor:hover::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    /* #4ea1ff on hover */
+}
+
+#editor::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* No arrows/buttons */
+#editor::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
