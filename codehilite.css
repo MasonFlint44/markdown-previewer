@@ -73,6 +73,11 @@ span.linenos.special {
     /* constants */
 }
 
+.codehilite .kt {
+    color: #b5cea8;
+    /* types now match numbers */
+}
+
 /* Operator & punctuation */
 .codehilite .o {
     color: #d4d4d4;
@@ -152,8 +157,6 @@ span.linenos.special {
 
 .codehilite .nc {
     color: #d7ba7d;
-    /* class names same as nt */
-    font-weight: bold;
 }
 
 .codehilite .nn {
@@ -166,7 +169,8 @@ span.linenos.special {
 }
 
 .codehilite .nd {
-    color: #c586c0;
+    color: #d7ba7d;
+    /* decorators now match class/tag */
 }
 
 .codehilite .ne {
