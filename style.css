@@ -170,10 +170,6 @@ textarea {
     .layout {
         grid-template-columns: 1fr;
     }
-
-    .pane {
-        min-height: auto;
-    }
 }
 
 /* Editor scrollbar — match code block styling */
